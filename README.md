@@ -1,4 +1,4 @@
-# Paviller-on-SageMath
+# Paillier-on-SageMath
 
 ## Protocole d’interrogation anonyme de base de données
 
