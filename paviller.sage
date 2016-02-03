@@ -54,15 +54,16 @@ def Encoding (m, KPub):
     Zn = Integers(n)
     Znn = Integers(n^2)
     g = Znn(KPub[1])
-    r = Znn(abs(ZZ.random_element()))
+    r = 0
+    while (r == 0): # r non-null
+        r = Znn((Zn.random_element()))
     c = Znn(g^m * r^n)
     return c
 
 def L(u, KPub):
     n = KPub[0]
-    Zn = Integers(n)
     Znn = Integers(n^2)
-    return Zn((u - 1).lift() / n)
+    return ((Znn(u).lift() - 1) / n)
 
 def Decoding (c, KPub, KPri):
     n = KPub[0]
@@ -71,11 +72,11 @@ def Decoding (c, KPub, KPri):
     g = Znn(KPub[1])
     lambdan = Znn(KPri[2])
 
-    Pup = L(pow(c, lambdan, n^2), KPub)
-    Pdown = L(pow(g, lambdan, n^2), KPub)
+    Pup = L((c^lambdan), KPub)
+    Pdown = L((g^lambdan), KPub)
     m = Zn(Pup / Pdown)
     return m
 
 # fast test with:
-# m = ? # a number as clear message
-# getKeyList(); getPubKey (LKey); getPriKey (LKey); c = Encoding (m, KPub); Decoding (c, KPub, KPri)
+# m = getRandom(); m # a number as clear message
+# LKey = getKeyList(); KPub = getPubKey (LKey); KPri = getPriKey (LKey); c = Encoding (m, KPub); Decoding (c, KPub, KPri)
