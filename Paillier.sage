@@ -1,14 +1,11 @@
+@@ -0,0 +1,82 @@
 # Paviller CryptoSystem on SageMath
 # Feb. 03, 2016
 
 def getRandom ():
     tmp = 0;
     while (tmp == 0):
-<<<<<<< HEAD
         r = ZZ.random_element(2^511, 2^512)
-=======
-        r = ZZ.random_element(2^(512 - 1), 2^512)
->>>>>>> bf75ccdfb827582eab3b3b98eff89df55806c22f
         # random number 512 bits from 2^(512 - 1) to 2^215 - 1
         if is_prime(r):
             tmp = 1
@@ -37,10 +34,6 @@ def getKeyList ():
     g = n + 1
     LKey.append(g) #Lkey[4]
 
-<<<<<<< HEAD
-=======
-    # how it works for returning listKey1 & listKey2 at the same time?
->>>>>>> bf75ccdfb827582eab3b3b98eff89df55806c22f
     return LKey
 
 
@@ -64,10 +57,7 @@ def Encoding (m, KPub):
     r = 0
     while (r == 0): # r non-null
         r = Znn((Zn.random_element()))
-<<<<<<< HEAD
     print (r)
-=======
->>>>>>> bf75ccdfb827582eab3b3b98eff89df55806c22f
     c = Znn(g^m * r^n)
     return c
 
